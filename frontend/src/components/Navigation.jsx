@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Terminal, Menu, X } from "lucide-react";
+import { Terminal, Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const NAV_LINKS = [
   { label: "about", href: "#about" },
@@ -11,6 +12,7 @@ const NAV_LINKS = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -58,16 +60,44 @@ export default function Navigation() {
             >
               ./connect.sh
             </a>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              data-testid="theme-toggle"
+              aria-label="Toggle theme"
+              className="ml-2 w-9 h-9 inline-flex items-center justify-center rounded-md border border-[#1E293B] text-[#94A3B8] hover:text-[#10B981] hover:border-[#10B981]/40 transition-colors"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
           </nav>
 
-          <button
-            data-testid="mobile-menu-toggle"
-            className="md:hidden text-[#F8FAFC] p-2"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              data-testid="theme-toggle-mobile"
+              aria-label="Toggle theme"
+              className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-[#1E293B] text-[#94A3B8] hover:text-[#10B981] transition-colors"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
+            <button
+              data-testid="mobile-menu-toggle"
+              className="text-[#F8FAFC] p-2"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {mobileOpen && (
