@@ -102,7 +102,7 @@ export default function Skills() {
           <div className="mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
               <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-3">
-                03 / skills_and_certifications
+                04 / skills_and_certifications
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold text-[#F8FAFC] max-w-3xl">
                 The toolchain I work with{" "}

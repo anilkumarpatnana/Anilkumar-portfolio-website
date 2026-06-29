@@ -4,6 +4,7 @@ import { useTheme } from "./ThemeProvider";
 
 const NAV_LINKS = [
   { label: "about", href: "#about" },
+  { label: "experience", href: "#experience" },
   { label: "projects", href: "#projects" },
   { label: "skills", href: "#skills" },
   { label: "contact", href: "#contact" },

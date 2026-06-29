@@ -25,7 +25,7 @@ export default function Contact() {
         <Reveal>
           <div className="text-center mb-12">
             <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-4">
-              04 / get_in_touch
+              06 / get_in_touch
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-bold text-[#F8FAFC]">
               Let's build something
