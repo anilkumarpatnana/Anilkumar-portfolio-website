@@ -3,62 +3,67 @@ import {
   Container,
   FileCode2,
   Activity,
-  Network,
-  Database,
+  GitBranch,
   Terminal as TerminalIcon,
   Award,
   ShieldCheck,
   ExternalLink,
 } from "lucide-react";
 
-const SKILL_GROUPS = [
+const CORE_STACK = [
   {
-    id: "cloud",
+    id: "aws",
     icon: Cloud,
-    title: "Cloud (AWS)",
-    items: [
-      "EC2", "S3", "EBS", "EFS", "IAM", "VPC",
-      "ELB / ALB", "CloudWatch", "SNS", "ECR", "ECS", "Route 53",
-    ],
+    name: "AWS",
+    tag: "cloud_platform",
+    desc: "EC2, S3, VPC, IAM, RDS, ELB, CloudWatch, Route 53, ECR, ECS.",
   },
   {
-    id: "containers",
-    icon: Container,
-    title: "Containers & Orchestration",
-    items: ["Docker", "Kubernetes", "Red Hat OpenShift"],
-  },
-  {
-    id: "iac",
-    icon: FileCode2,
-    title: "Infrastructure as Code",
-    items: ["Terraform", "Modules", "State files", "Variables"],
-  },
-  {
-    id: "observability",
-    icon: Activity,
-    title: "Monitoring & Observability",
-    items: [
-      "Grafana", "Datadog APM", "Dynatrace",
-      "CloudWatch", "OpenSearch", "Heal",
-      "ServiceNow", "Firebase Crashlytics",
-    ],
-  },
-  {
-    id: "networking",
-    icon: Network,
-    title: "Networking",
-    items: [
-      "VPC design", "VPN / Site-to-Site",
-      "Route tables", "Security Groups",
-      "NAT / Internet Gateways", "VPC Peering",
-    ],
-  },
-  {
-    id: "core",
+    id: "linux",
     icon: TerminalIcon,
-    title: "OS, Scripting & Databases",
-    items: ["Linux", "Shell", "RDS (MySQL/Postgres)", "EBS Snapshots", "AMIs"],
+    name: "Linux",
+    tag: "operating_system",
+    desc: "Daily driver for production servers, scripting and troubleshooting.",
   },
+  {
+    id: "docker",
+    icon: Container,
+    name: "Docker",
+    tag: "containerization",
+    desc: "Building, shipping and running containerized application workloads.",
+  },
+  {
+    id: "kubernetes",
+    icon: Container,
+    name: "Kubernetes",
+    tag: "orchestration",
+    desc: "Cluster ops on EKS and Red Hat OpenShift — deployments, pod health.",
+  },
+  {
+    id: "terraform",
+    icon: FileCode2,
+    name: "Terraform",
+    tag: "iac",
+    desc: "Provisioning EC2, VPC, S3 with modules, state files and variables.",
+  },
+  {
+    id: "jenkins",
+    icon: GitBranch,
+    name: "Jenkins",
+    tag: "ci_cd",
+    desc: "Automated build, test and deploy pipelines for reliable delivery.",
+  },
+];
+
+const MONITORING_TOOLS = [
+  "Grafana",
+  "Datadog APM",
+  "Dynatrace",
+  "CloudWatch",
+  "OpenSearch",
+  "Heal",
+  "ServiceNow",
+  "Firebase Crashlytics",
 ];
 
 const RESUME_URL =
@@ -84,8 +89,8 @@ export default function Skills() {
             </h2>
           </div>
           <p className="text-sm text-[#94A3B8] max-w-md leading-relaxed">
-            Four years of hands-on experience across AWS cloud services,
-            networking, observability and infrastructure automation.
+            Four years of hands-on experience across AWS, containerisation,
+            infrastructure automation and observability.
           </p>
         </div>
 
@@ -102,7 +107,6 @@ export default function Skills() {
             }}
           />
           <div className="relative grid sm:grid-cols-[auto_1fr_auto] items-center gap-6 p-6 sm:p-8">
-            {/* Badge */}
             <div className="flex items-center justify-center w-20 h-20 rounded-full border-2 border-[#10B981] bg-[#10B981]/10 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
               <Award className="w-9 h-9 text-[#10B981]" />
             </div>
@@ -141,37 +145,68 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* Skill groups grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {SKILL_GROUPS.map(({ id, icon: Icon, title, items }) => (
-            <div
-              key={id}
-              data-testid={`skill-group-${id}`}
-              className="group border border-[#1E293B] bg-[#111827] rounded-md p-6 card-glow transition-all"
-            >
-              <div className="flex items-center justify-between mb-5">
-                <div className="w-10 h-10 rounded-md border border-[#1E293B] bg-[#0d1320] flex items-center justify-center group-hover:border-[#10B981]/40 transition-colors">
-                  <Icon className="w-5 h-5 text-[#10B981]" />
-                </div>
-                <span className="font-mono text-[10px] text-[#94A3B8]">
-                  {String(items.length).padStart(2, "0")} items
-                </span>
-              </div>
-              <h3 className="text-base font-semibold text-[#F8FAFC] mb-4">
-                {title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="font-mono text-[11px] px-2 py-1 rounded border border-[#1E293B] bg-[#0A0E17] text-[#94A3B8] hover:text-[#10B981] hover:border-[#10B981]/40 transition-colors"
-                  >
-                    {item}
+        {/* Core stack grid */}
+        <div className="mb-12">
+          <div className="font-mono text-xs text-[#94A3B8] tracking-[0.2em] uppercase mb-5">
+            // core_stack
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {CORE_STACK.map(({ id, icon: Icon, name, tag, desc }) => (
+              <div
+                key={id}
+                data-testid={`skill-${id}`}
+                className="group border border-[#1E293B] bg-[#111827] rounded-md p-6 card-glow transition-all"
+              >
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-11 h-11 rounded-md border border-[#1E293B] bg-[#0d1320] flex items-center justify-center group-hover:border-[#10B981]/40 transition-colors">
+                    <Icon className="w-5 h-5 text-[#10B981]" />
+                  </div>
+                  <span className="font-mono text-[10px] text-[#94A3B8] px-2 py-1 rounded border border-[#1E293B]">
+                    {tag}
                   </span>
-                ))}
+                </div>
+                <h3 className="text-lg font-semibold text-[#F8FAFC] mb-2">
+                  {name}
+                </h3>
+                <p className="text-sm text-[#94A3B8] leading-relaxed">
+                  {desc}
+                </p>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Monitoring & observability */}
+        <div
+          data-testid="skill-monitoring"
+          className="border border-[#1E293B] bg-[#111827] rounded-md p-6 sm:p-8 card-glow"
+        >
+          <div className="flex items-start gap-5 mb-5 flex-col sm:flex-row sm:items-center">
+            <div className="w-11 h-11 rounded-md border border-[#1E293B] bg-[#0d1320] flex items-center justify-center">
+              <Activity className="w-5 h-5 text-[#10B981]" />
             </div>
-          ))}
+            <div className="flex-1">
+              <div className="font-mono text-xs text-[#94A3B8] tracking-[0.2em] uppercase mb-1">
+                // monitoring_and_observability
+              </div>
+              <h3 className="text-lg font-semibold text-[#F8FAFC]">
+                Application performance monitoring & infra observability
+              </h3>
+            </div>
+            <span className="font-mono text-[10px] text-[#10B981] px-2 py-1 rounded border border-[#10B981]/30 bg-[#10B981]/5">
+              {String(MONITORING_TOOLS.length).padStart(2, "0")} tools
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {MONITORING_TOOLS.map((t) => (
+              <span
+                key={t}
+                className="font-mono text-xs px-3 py-1.5 rounded border border-[#1E293B] bg-[#0A0E17] text-[#94A3B8] hover:text-[#10B981] hover:border-[#10B981]/40 transition-colors"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

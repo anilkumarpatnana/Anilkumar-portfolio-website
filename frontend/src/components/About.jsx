@@ -87,6 +87,13 @@ export default function About() {
               Infrastructure as Code to simplify deployments.
             </p>
             <p className="mt-5 text-base text-[#94A3B8] leading-relaxed">
+              Alongside DevOps work, I've spent time as an{" "}
+              <span className="text-[#F8FAFC]">Observability Engineer</span> on
+              a <span className="text-[#10B981]">banking domain</span> project —
+              owning application performance monitoring, infra dashboards and
+              proactive alerting to keep critical services reliable.
+            </p>
+            <p className="mt-5 text-base text-[#94A3B8] leading-relaxed">
               I'm continuously learning new technologies and committed to delivering
               <span className="text-[#10B981]"> secure</span>,
               <span className="text-[#10B981]"> scalable</span>, and
