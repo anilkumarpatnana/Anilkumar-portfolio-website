@@ -123,11 +123,12 @@ html.light .bg-gradient-to-t.from-\[\#0A0E17\] {
 /* Terminal cursor blink in light mode */
 html.light .cursor-blink { background: #10B981; }
 
-/* Theme toggle button base text color (dark icon on light) */
-html.light [data-testid="theme-toggle"],
-html.light [data-testid="theme-toggle-mobile"] {
-    color: #475569;
-    border-color: #E2E8F0;
+/* Scrolled nav bg in light mode */
+html.light header[data-testid="main-nav"] {
+    background-color: rgba(250, 250, 249, 0.8) !important;
+}
+html.light header[data-testid="main-nav"][class*="border-b"] {
+    border-bottom-color: #E2E8F0 !important;
 }
 
 .font-mono {
@@ -183,6 +184,14 @@ html.light [data-testid="theme-toggle-mobile"] {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+
+/* Theme toggle button base text color (dark icon on light) */
+html.light [data-testid="theme-toggle"],
+html.light [data-testid="theme-toggle-mobile"] {
+    color: #475569;
+    border-color: #E2E8F0;
+}
+
     animation: shimmer 6s linear infinite;
 }
 
