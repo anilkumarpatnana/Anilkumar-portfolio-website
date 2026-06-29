@@ -1,4 +1,5 @@
 import { Mail, Linkedin, ArrowRight, Send, Download } from "lucide-react";
+import Reveal from "./Reveal";
 
 const EMAIL = "anilkumarpatnana555@gmail.com";
 const LINKEDIN =
@@ -21,23 +22,26 @@ export default function Contact() {
       />
 
       <div className="relative max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-4">
-            04 / get_in_touch
+        <Reveal>
+          <div className="text-center mb-12">
+            <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-4">
+              04 / get_in_touch
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-bold text-[#F8FAFC]">
+              Let's build something
+              <br />
+              <span className="text-[#10B981] glow-text">great together.</span>
+            </h2>
+            <p className="mt-6 text-base sm:text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
+              Whether you have a project, a collaboration opportunity, or simply
+              want to discuss DevOps and cloud technologies, I'd love to hear from
+              you.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-bold text-[#F8FAFC]">
-            Let's build something
-            <br />
-            <span className="text-[#10B981] glow-text">great together.</span>
-          </h2>
-          <p className="mt-6 text-base sm:text-lg text-[#94A3B8] max-w-2xl mx-auto leading-relaxed">
-            Whether you have a project, a collaboration opportunity, or simply
-            want to discuss DevOps and cloud technologies, I'd love to hear from
-            you.
-          </p>
-        </div>
+        </Reveal>
 
         {/* Terminal-style CTA card */}
+        <Reveal delay={0.15}>
         <div
           data-testid="contact-card"
           className="rounded-lg border border-[#1E293B] bg-[#0d1320] overflow-hidden shadow-2xl"
@@ -127,6 +131,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

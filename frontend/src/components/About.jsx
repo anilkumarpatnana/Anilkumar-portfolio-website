@@ -1,4 +1,5 @@
 import { Code, Cloud, GitBranch, Cpu } from "lucide-react";
+import Reveal from "./Reveal";
 
 const HIGHLIGHTS = [
   { icon: Cloud, label: "Cloud Native", desc: "AWS-first infra design" },
@@ -29,19 +30,22 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="mb-16">
-          <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-3">
-            01 / about_me
+        <Reveal>
+          <div className="mb-16">
+            <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-3">
+              01 / about_me
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold text-[#F8FAFC] max-w-3xl">
+              DevOps Engineer engineering reliability,
+              <br />
+              <span className="text-[#10B981]">one pipeline at a time.</span>
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold text-[#F8FAFC] max-w-3xl">
-            DevOps Engineer engineering reliability,
-            <br />
-            <span className="text-[#10B981]">one pipeline at a time.</span>
-          </h2>
-        </div>
+        </Reveal>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Code editor card */}
+          <Reveal delay={0.1}>
           <div
             data-testid="about-code-card"
             className="rounded-lg overflow-hidden border border-[#1E293B] bg-[#0d1320] shadow-2xl"
@@ -73,8 +77,10 @@ export default function About() {
               ))}
             </div>
           </div>
+          </Reveal>
 
           {/* Narrative */}
+          <Reveal delay={0.2}>
           <div>
             <p
               data-testid="about-narrative"
@@ -102,11 +108,11 @@ export default function About() {
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-4">
-              {HIGHLIGHTS.map(({ icon: Icon, label, desc }) => (
+              {HIGHLIGHTS.map(({ icon: Icon, label, desc }, idx) => (
+                <Reveal key={label} delay={0.3 + idx * 0.08}>
                 <div
-                  key={label}
                   data-testid={`about-highlight-${label.toLowerCase().replace(/[^a-z]/g, "-")}`}
-                  className="group border border-[#1E293B] rounded-md p-4 bg-[#111827]/50 hover:bg-[#111827] transition-colors card-glow"
+                  className="group border border-[#1E293B] rounded-md p-4 bg-[#111827]/50 hover:bg-[#111827] transition-all card-glow hover:-translate-y-1 duration-300 h-full"
                 >
                   <Icon className="w-5 h-5 text-[#10B981] mb-3" />
                   <div className="font-mono text-sm text-[#F8FAFC] font-semibold">
@@ -114,9 +120,11 @@ export default function About() {
                   </div>
                   <div className="text-xs text-[#94A3B8] mt-1">{desc}</div>
                 </div>
+                </Reveal>
               ))}
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
     </section>

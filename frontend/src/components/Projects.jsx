@@ -1,4 +1,5 @@
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import Reveal from "./Reveal";
 
 const PROJECTS = [
   {
@@ -51,30 +52,32 @@ export default function Projects() {
       className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 relative"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          <div>
-            <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-3">
-              02 / featured_projects
+        <Reveal>
+          <div className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <div>
+              <div className="font-mono text-xs text-[#10B981] tracking-[0.2em] uppercase mb-3">
+                02 / featured_projects
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold text-[#F8FAFC]">
+                Engineering reliable systems,
+                <br />
+                <span className="text-[#10B981]">one pipeline at a time.</span>
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold text-[#F8FAFC]">
-              Engineering reliable systems,
-              <br />
-              <span className="text-[#10B981]">one pipeline at a time.</span>
-            </h2>
+            <p className="text-sm text-[#94A3B8] max-w-md leading-relaxed">
+              Real-world DevOps work demonstrating practical experience with cloud
+              platforms, automation tools, containerisation, and deployment
+              pipelines.
+            </p>
           </div>
-          <p className="text-sm text-[#94A3B8] max-w-md leading-relaxed">
-            Real-world DevOps work demonstrating practical experience with cloud
-            platforms, automation tools, containerisation, and deployment
-            pipelines.
-          </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {PROJECTS.map((p, idx) => (
+            <Reveal key={p.id} delay={idx * 0.08}>
             <article
-              key={p.id}
               data-testid={`project-card-${p.id}`}
-              className={`group relative border border-[#1E293B] bg-[#111827] rounded-md p-6 sm:p-7 card-glow transition-all duration-300 ${p.span}`}
+              className={`group relative border border-[#1E293B] bg-[#111827] rounded-md p-6 sm:p-7 card-glow transition-all duration-300 hover:-translate-y-1 h-full ${p.span}`}
             >
               {/* Index + metric row */}
               <div className="flex items-center justify-between mb-6">
@@ -129,6 +132,7 @@ export default function Projects() {
                 <ArrowUpRight className="w-4 h-4 ml-auto text-[#94A3B8] group-hover:text-[#10B981] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </div>
