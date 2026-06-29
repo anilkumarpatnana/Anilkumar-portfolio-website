@@ -1,4 +1,4 @@
-import { Mail, Linkedin, ArrowRight, Send } from "lucide-react";
+import { Mail, Linkedin, ArrowRight, Send, Download } from "lucide-react";
 
 const EMAIL = "anilkumarpatnana555@gmail.com";
 const LINKEDIN =
@@ -109,6 +109,19 @@ export default function Contact() {
                   className="text-[#F8FAFC] hover:text-[#10B981] transition-colors break-all"
                 >
                   /in/patnana-anil-kumar
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-[#94A3B8]">
+                <Download className="w-4 h-4 text-[#10B981]" />
+                <span className="text-[#38BDF8]">resume:</span>
+                <a
+                  href="https://customer-assets.emergentagent.com/job_anil-devops/artifacts/pvsjkl44_Anil_kumar_cloud_resume_MINFY.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="contact-resume-link"
+                  className="text-[#F8FAFC] hover:text-[#10B981] transition-colors"
+                >
+                  Anil_Kumar_Patnana_Resume.pdf
                 </a>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, MapPin, Activity } from "lucide-react";
+import { ArrowRight, MapPin, Activity, Download } from "lucide-react";
 
 const PHRASES = [
   "Building Scalable Cloud Infrastructure",
@@ -150,6 +150,16 @@ export default function Hero() {
           >
             View My Projects
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="https://customer-assets.emergentagent.com/job_anil-devops/artifacts/pvsjkl44_Anil_kumar_cloud_resume_MINFY.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="hero-cta-resume"
+            className="group inline-flex items-center justify-center gap-2 bg-transparent text-[#F8FAFC] border border-[#1E293B] hover:border-[#10B981] hover:text-[#10B981] px-6 py-3 rounded-md transition-colors font-mono text-sm"
+          >
+            <Download className="w-4 h-4" />
+            download_resume.pdf
           </a>
           <a
             href="#contact"
