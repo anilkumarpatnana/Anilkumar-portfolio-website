@@ -1,7 +1,5 @@
-"""One-off script: edit a portrait photo to add a professional suit while
-preserving the face/identity, using Gemini Nano Banana via the Emergent
-universal LLM key. Output PNG is saved to /app/frontend/public/assets/.
-"""
+"""Generate two professional headshot variants (front-facing and side/3-4) of
+the user, preserving exact facial identity from the reference selfies."""
 import asyncio
 import base64
 import os
@@ -12,52 +10,72 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage, ImageContent
 
 load_dotenv("/app/backend/.env")
 
-INPUT_PATH = Path("/tmp/anil_original.jpg")
-OUTPUT_DIR = Path("/app/frontend/public/assets")
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-OUTPUT_PATH = OUTPUT_DIR / "anil_professional.png"
-
-PROMPT = (
-    "Edit this photo into a polished professional headshot suitable for a "
-    "LinkedIn / corporate portfolio. STRICTLY preserve the person's exact "
-    "face, facial features, skin tone, hairstyle and identity — do not "
-    "alter the face in any way. Remove the phone and the orange polo shirt. "
-    "Dress the person in a tailored dark navy business suit with a crisp "
-    "white dress shirt and a subtle dark tie. Keep the same hand posture if "
-    "natural but without the phone. Replace the bathroom background with a "
-    "soft, blurred neutral studio background (dark charcoal grey). Use even "
-    "soft studio lighting. Photorealistic, high resolution, sharp focus on "
-    "the face. Output: square 1:1 aspect ratio."
-)
+REFS = [
+    Path("/tmp/ref_a.jpg"),  # clear 3/4 front-facing selfie
+    Path("/tmp/anil_original.jpg"),  # original side-facing selfie
+    Path("/tmp/ref_c.jpg"),  # additional reference
+]
+OUT_DIR = Path("/app/frontend/public/assets")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
-async def main():
+VARIANTS = {
+    "anil_front.png": (
+        "Generate a polished, photorealistic corporate LinkedIn headshot of the "
+        "EXACT same young Indian man shown in the reference selfies. Preserve "
+        "his face, skin tone, eyes, eyebrows, nose, lips, jawline, and hair "
+        "identically — same person, no facial changes. He is facing the camera "
+        "DIRECTLY, looking straight at the lens with a soft confident smile. "
+        "He is wearing a tailored dark navy business suit jacket, crisp white "
+        "dress shirt, and a subtle dark tie. Shoulders square to camera, "
+        "head straight. Background: smooth soft-blurred dark charcoal grey "
+        "studio backdrop. Soft, even, flattering studio lighting with subtle "
+        "rim light. Sharp focus on the face. Natural skin texture (do not "
+        "over-smooth). 1:1 square aspect ratio, high resolution."
+    ),
+    "anil_side.png": (
+        "Generate a polished, photorealistic corporate LinkedIn headshot of the "
+        "EXACT same young Indian man shown in the reference selfies. Preserve "
+        "his face, skin tone, eyes, eyebrows, nose, lips, jawline, and hair "
+        "identically — same person, no facial changes. He is posed at a "
+        "classic 3/4 angle: body turned about 30 degrees to his left, face "
+        "turned slightly back toward the camera with a calm confident "
+        "expression. He is wearing a tailored dark navy business suit jacket, "
+        "crisp white dress shirt, and a subtle dark tie. Background: smooth "
+        "soft-blurred dark charcoal grey studio backdrop. Soft, even, "
+        "flattering studio lighting with subtle rim light on the right side. "
+        "Sharp focus on the face. Natural skin texture (do not over-smooth). "
+        "1:1 square aspect ratio, high resolution."
+    ),
+}
+
+
+async def generate(prompt: str, out: Path):
     api_key = os.getenv("EMERGENT_LLM_KEY")
-    if not api_key:
-        raise RuntimeError("EMERGENT_LLM_KEY missing")
-
-    image_b64 = base64.b64encode(INPUT_PATH.read_bytes()).decode("utf-8")
-
+    refs = [
+        ImageContent(base64.b64encode(p.read_bytes()).decode("utf-8"))
+        for p in REFS if p.exists()
+    ]
     chat = LlmChat(
         api_key=api_key,
-        session_id="anil-portrait-edit",
+        session_id=f"anil-headshot-{out.stem}",
         system_message="You are a professional photo retoucher.",
     )
     chat.with_model("gemini", "gemini-3.1-flash-image-preview").with_params(
         modalities=["image", "text"]
     )
-
-    msg = UserMessage(text=PROMPT, file_contents=[ImageContent(image_b64)])
-
+    msg = UserMessage(text=prompt, file_contents=refs)
     text, images = await chat.send_message_multimodal_response(msg)
-    print("text:", (text or "")[:160])
-
+    print(f"{out.name}: text={(text or '')[:80]}, images={len(images or [])}")
     if not images:
-        raise RuntimeError("No images returned")
+        raise RuntimeError("No images returned for " + out.name)
+    out.write_bytes(base64.b64decode(images[0]["data"]))
+    print(f"Saved -> {out} ({out.stat().st_size} bytes)")
 
-    image_bytes = base64.b64decode(images[0]["data"])
-    OUTPUT_PATH.write_bytes(image_bytes)
-    print(f"Saved {len(image_bytes)} bytes -> {OUTPUT_PATH}")
+
+async def main():
+    for fname, prompt in VARIANTS.items():
+        await generate(prompt, OUT_DIR / fname)
 
 
 if __name__ == "__main__":

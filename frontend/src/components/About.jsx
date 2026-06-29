@@ -1,4 +1,5 @@
 import { Code, Cloud, GitBranch, Cpu } from "lucide-react";
+import { useState } from "react";
 import Reveal from "./Reveal";
 
 const HIGHLIGHTS = [
@@ -22,6 +23,9 @@ const LINES = [
 ];
 
 export default function About() {
+  const [pose, setPose] = useState("front");
+  const portraitSrc =
+    pose === "front" ? "/assets/anil_front.png" : "/assets/anil_side.png";
   return (
     <section
       id="about"
@@ -61,15 +65,39 @@ export default function About() {
                 <span className="ml-2 font-mono text-xs text-[#94A3B8]">
                   ~/profile.jpg
                 </span>
-                <span className="ml-auto font-mono text-[10px] text-[#10B981]">
-                  ● live
-                </span>
+                <div className="ml-auto flex items-center gap-1 font-mono text-[10px]">
+                  <button
+                    type="button"
+                    data-testid="pose-toggle-front"
+                    onClick={() => setPose("front")}
+                    className={`px-2 py-1 rounded transition-colors ${
+                      pose === "front"
+                        ? "bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/40"
+                        : "text-[#94A3B8] border border-[#1E293B] hover:text-[#F8FAFC]"
+                    }`}
+                  >
+                    --front
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="pose-toggle-side"
+                    onClick={() => setPose("side")}
+                    className={`px-2 py-1 rounded transition-colors ${
+                      pose === "side"
+                        ? "bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/40"
+                        : "text-[#94A3B8] border border-[#1E293B] hover:text-[#F8FAFC]"
+                    }`}
+                  >
+                    --side
+                  </button>
+                </div>
               </div>
               <div className="relative">
                 <img
-                  src="/assets/anil_professional.png"
+                  src={portraitSrc}
                   alt="Anil Kumar Patnana"
                   loading="lazy"
+                  key={pose}
                   className="w-full h-auto object-cover aspect-square transition-all duration-500 group-hover:scale-[1.02]"
                 />
                 {/* Subtle dark/green tint overlay */}
