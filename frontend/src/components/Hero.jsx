@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, MapPin, Activity, Download } from "lucide-react";
 import Reveal from "./Reveal";
 import CountUp from "./CountUp";
+import AnimatedName from "./AnimatedName";
 
 const PHRASES = [
   "Building Scalable Cloud Infrastructure",
@@ -111,19 +112,7 @@ export default function Hero() {
         </Reveal>
 
         {/* MASSIVE NAME */}
-        <Reveal delay={0.1} y={40} duration={0.9}>
-          <h1
-            data-testid="hero-name"
-            className="font-bold tracking-tighter leading-[0.85] mb-6"
-          >
-            <span className="block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-[#F8FAFC]">
-              ANIL KUMAR
-            </span>
-            <span className="block text-5xl sm:text-7xl lg:text-8xl xl:text-9xl name-shimmer">
-              PATNANA.
-            </span>
-          </h1>
-        </Reveal>
+        <AnimatedName />
 
         {/* Role line */}
         <Reveal delay={0.2}>
