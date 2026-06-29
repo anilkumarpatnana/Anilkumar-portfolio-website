@@ -1,0 +1,23 @@
+{
+  "summary": "Frontend-only smoke test of Anil Kumar Patnana DevOps portfolio (single-page React app). All requested scenarios passed: sections render, navigation smooth-scrolls, hero typewriter animates, mobile menu toggles, CTAs/footer have correct mailto and LinkedIn hrefs, projects (4) and testimonials (3) render. No console errors, no horizontal overflow on mobile (390) or desktop (1920).",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Landing page loads at root with 0 console errors",
+    "Renders hero-section, main-nav, projects-section, testimonials-section, contact-section, site-footer",
+    "Hero typewriter updates over time ('Building Sc' -> 'Building Scalable Cloud Infrastructure')",
+    "hero-cta-projects and hero-cta-connect present and clickable",
+    "Nav links about/projects/testimonials/contact each smooth-scroll target into viewport",
+    "All 4 project cards present: ci-cd-pipeline, aws-iac, k8s-microservices, monitoring-stack",
+    "3 testimonial logs render with names Sneha Reddy, Karthik Menon, Priya Iyer",
+    "contact-cta-email href starts with mailto:anilkumarpatnana555@gmail.com",
+    "contact-cta-linkedin href = https://www.linkedin.com/in/patnana-anil-kumar-662191182 with target=_blank",
+    "footer-email = mailto:anilkumarpatnana555@gmail.com; footer-linkedin = correct LinkedIn URL",
+    "Mobile (390x844): mobile-menu-toggle reveals mobile-menu (visible=true)",
+    "No horizontal overflow on mobile (390) or desktop (1920)"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "skipped", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
