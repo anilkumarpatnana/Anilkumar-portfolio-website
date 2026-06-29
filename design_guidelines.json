@@ -1,0 +1,125 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) - Retro-Futurism/Terminal Variant",
+  "typography": {
+    "fonts": {
+      "headings": "'Outfit', sans-serif",
+      "body": "'Outfit', sans-serif",
+      "monospace": "'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-bold",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base leading-relaxed",
+      "overline": "text-xs tracking-[0.2em] uppercase font-monospace",
+      "code": "text-sm font-monospace"
+    },
+    "imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap');"
+    ]
+  },
+  "colors": {
+    "background": "#0A0E17",
+    "surface": "#111827",
+    "surface_hover": "#1F2937",
+    "border": "#1E293B",
+    "border_highlight": "#10B981",
+    "primary": "#10B981",
+    "primary_glow": "rgba(16, 185, 129, 0.2)",
+    "secondary": "#38BDF8",
+    "text_primary": "#F8FAFC",
+    "text_secondary": "#94A3B8",
+    "error": "#EF4444"
+  },
+  "layout": {
+    "spacing": {
+      "section_padding": "py-24 sm:py-32",
+      "container_padding": "px-4 sm:px-6 lg:px-8",
+      "gap_standard": "gap-8 lg:gap-12",
+      "gap_dense": "gap-4 sm:gap-6"
+    },
+    "borders": {
+      "radius": "rounded-md",
+      "width": "border",
+      "style": "solid"
+    },
+    "grid": {
+      "bento_projects": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]"
+    }
+  },
+  "components": {
+    "hero": {
+      "style": "Terminal simulation layout. Wrap the content in a div that looks like a macOS/Linux terminal window (header bar with 3 dots: red, yellow, green). Content inside should have monospace fonts for command simulation.",
+      "animation": "Typewriter effect for the main headline or command input."
+    },
+    "about": {
+      "style": "Code editor split view. Left side shows line numbers (1, 2, 3...) in text-secondary color. Right side shows the actual 'About Me' text styled like JSON or YAML configuration.",
+      "layout": "Grid layout with text on one side and the author's portrait on the other."
+    },
+    "projects": {
+      "style": "Control Room Grid. Cards have pure solid #111827 backgrounds with 1px border-[#1E293B]. On hover, border turns to primary color (#10B981) and adds a subtle drop-shadow glow.",
+      "tags": "Tech stack tags must look like terminal badges (bg-primary/10 text-primary border border-primary/20 text-xs font-monospace px-2 py-1 rounded)."
+    },
+    "testimonials": {
+      "style": "Server log output style. Testimonials displayed as terminal execution logs, e.g., '[SUCCESS] Executed feedback.sh - user: Colleague Name'."
+    },
+    "navigation": {
+      "style": "Sticky crystal glass header. backdrop-blur-xl bg-[#0A0E17]/80, border-b border-[#1E293B]. Nav links use JetBrains Mono."
+    },
+    "buttons": {
+      "primary": "bg-primary text-[#0A0E17] font-semibold px-6 py-3 rounded-md hover:bg-emerald-400 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.3)]",
+      "secondary": "bg-transparent text-primary border border-primary px-6 py-3 rounded-md hover:bg-primary/10 transition-colors font-monospace"
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero_background",
+        "url": "https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg",
+        "description": "Modern server room with blue illumination. Use as a very low opacity background (e.g. 5-10%) behind the hero section."
+      },
+      {
+        "category": "about_portrait",
+        "url": "https://images.pexels.com/photos/5483147/pexels-photo-5483147.jpeg",
+        "description": "Software engineer portrait for the About Me section. Apply a grayscale or heavy dark-blue tint filter via CSS to match the theme."
+      },
+      {
+        "category": "project_placeholder_1",
+        "url": "https://images.pexels.com/photos/17489150/pexels-photo-17489150.jpeg",
+        "description": "Cloud infrastructure placeholder for Project 1."
+      },
+      {
+        "category": "project_placeholder_2",
+        "url": "https://images.pexels.com/photos/37730211/pexels-photo-37730211.jpeg",
+        "description": "Server rack placeholder for Project 2."
+      },
+      {
+        "category": "testimonial_avatar_1",
+        "url": "https://images.pexels.com/photos/31869537/pexels-photo-31869537.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Avatar for testimonial 1."
+      },
+      {
+        "category": "testimonial_avatar_2",
+        "url": "https://images.pexels.com/photos/29852895/pexels-photo-29852895.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Avatar for testimonial 2."
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "instruction": "Use Terminal, Server, Cloud, Cpu, Code, Command, GitBranch icons heavily."
+    }
+  },
+  "testing": {
+    "instructions": "All interactive and key informational elements MUST include a 'data-testid' attribute using kebab-case, role-based naming convention."
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark terminal theme. NO generic purple or teal gradients.",
+    "Use pure HTML/Tailwind for the Hero section to build the Terminal window wrapper.",
+    "Install and use 'framer-motion' for subtle fade-ins and standard transitions.",
+    "Install and use 'react-type-animation' for the hero typing effect.",
+    "Do not use generic Shadcn cards. Use custom div structures with 1px borders to maintain the technical dashboard feel.",
+    "Ensure high contrast: text should be bright against the dark #0A0E17 background.",
+    "Add 'data-testid' to every button, link, and form input."
+  ]
+}
