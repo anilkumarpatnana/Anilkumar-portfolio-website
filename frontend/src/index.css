@@ -170,6 +170,16 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+/* Hide Emergent platform badge if injected */
+#emergent-badge,
+a[href*="app.emergent.sh"][id="emergent-badge"],
+a[href*="emergent.sh/?utm_source=emergent-badge"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
 /* Glow text */
 .glow-text {
     text-shadow: 0 0 30px var(--primary-glow);
