@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: my-portfolio
-        image: anilkumarpatnana/my-portfolio:13
+        image: anilkumarpatnana/my-portfolio:14
         ports:
         - containerPort: 8080
 
