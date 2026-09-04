@@ -31,7 +31,7 @@ const EXPERIENCE = [
       "Monitored key infrastructure metrics including CPU, memory, disk utilization, and server availability",
       "Monitored pods and workloads using Red Hat OpenShift Console and identified pod failures, restarts, and availability issues",
       "Initiated and coordinated bridge calls for critical microservice and production issues with relevant stake holders",
-      "Used grafana for application and infrastructure monitoring and Helix for logging the tickets"
+      "Used grafana for application and infrastructure monitoring and Helix for logging the tickets",
     ],
   },
 ];
