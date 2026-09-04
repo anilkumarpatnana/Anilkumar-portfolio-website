@@ -197,10 +197,18 @@ export default function Hero() {
   href="/Updated_Resume_Anil.pdf"
   target="_blank"
   rel="noopener noreferrer"
-  data-testid="contact-resume-link"
-  className="text-[#F8FAFC] hover:text-[#10B981] transition-colors"
+  download="Anil_Kumar_Patnana_Resume.pdf"
+  data-testid="hero-cta-resume"
+  className="inline-flex items-center justify-center gap-2
+    bg-transparent text-[#F8FAFC]
+    border border-[#1E293B]
+    px-6 py-3 rounded-md
+    hover:border-[#10B981]
+    hover:text-[#10B981]
+    transition-colors font-mono text-sm"
 >
-  Anil_Kumar_Patnana_Resume.pdf
+  <Download className="w-4 h-4" />
+  download_resume.pdf
 </a>
             <a
               href="#contact"
