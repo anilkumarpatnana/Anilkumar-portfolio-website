@@ -155,23 +155,16 @@ export default function Skills() {
                 </div>
               </div>
 
-              <a
-  href="/Updated_Resume_Anil.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  download="Anil_Kumar_Patnana_Resume.pdf"
-  data-testid="hero-cta-resume"
-  className="inline-flex items-center justify-center gap-2
-    bg-transparent text-[#F8FAFC]
-    border border-[#1E293B]
-    px-6 py-3 rounded-md
-    hover:border-[#10B981]
-    hover:text-[#10B981]
-    transition-colors font-mono text-sm"
->
-  <Download className="w-4 h-4" />
-  view_resume.pdf
-</a>
+  <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="skills-resume-link"
+                className="hidden sm:inline-flex items-center gap-2 font-mono text-xs px-4 py-2.5 border border-[#10B981] text-[#10B981] rounded-md hover:bg-[#10B981]/10 transition-colors whitespace-nowrap"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                view_resume.pdf
+              </a>
             </div>
           </div>
         </Reveal>
