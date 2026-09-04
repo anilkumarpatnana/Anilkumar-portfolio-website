@@ -23,14 +23,15 @@ const EXPERIENCE = [
     role: "Observability Engineer",
     company: "Tata Consultancy Services",
     location: "Hyderabad, IN",
-    period: "Mar 2022 — May 2023",
+    period: "March 2022 — May 2023",
     current: false,
     tags: ["EC2", "VPC", "IAM", "RDS", "Terraform", "CloudWatch"],
     highlights: [
-      "Managed AWS infrastructure: EC2, S3, VPC, IAM, RDS with secure multi-AZ deployments and automated backups",
-      "Designed VPC architectures with public/private subnets, NAT/Internet Gateways and Site-to-Site VPN",
-      "Provisioned infrastructure as code with Terraform (modules, state files, variables)",
-      "Implemented Auto Scaling Groups, ELB/ALB and KMS encryption for high availability and security",
+      "Monitored infrastructure and applications across Windows, Linux, middleware, and database servers",
+      "Monitored key infrastructure metrics including CPU, memory, disk utilization, and server availability",
+      "Monitored pods and workloads using Red Hat OpenShift Console and identified pod failures, restarts, and availability issues",
+      "Initiated and coordinated bridge calls for critical microservice and production issues with relevant stake holders"
+      "Used grafana for application and infrastructure monitoring and Helix for logging the tickets",
     ],
   },
 ];
