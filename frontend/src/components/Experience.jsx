@@ -4,25 +4,26 @@ import Reveal from "./Reveal";
 const EXPERIENCE = [
   {
     id: "tcs-systems",
-    role: "Systems Engineer",
+    role: "DevOps Engineer",
     company: "Tata Consultancy Services",
     location: "Hyderabad, IN",
-    period: "Mar 2022 — Present",
+    period: "June 2023 — Present",
     current: true,
-    tags: ["AWS", "OpenShift", "Grafana", "OpenSearch", "Banking Domain"],
+    tags: ["DOCKER", "K8S", "TERRAFORM", "LINUX", "JENKINS"],
     highlights: [
-      "24/7 production support for infrastructure monitoring across Linux/Windows systems, middleware and databases",
-      "Application performance monitoring on a banking-domain project using Grafana, Heal dashboards and CloudWatch",
-      "Monitored pod health on Red Hat OpenShift and analysed logs via OpenSearch for RCA",
-      "Reduced Mean Time to Detect (MTTD) via proactive alerting and ServiceNow incident management",
+      "Experienced in containerizing applications and managing Docker containers",
+      "Experienced in deploying, scaling, and managing containerized applications",
+      "Experienced in creating and managing CI/CD pipelines for automated deployments",
+      "Experienced in provisioning and managing cloud infrastructure using Infrastructure as Code",
+      "Experienced in server administration, system configuration, and troubleshooting"
     ],
   },
   {
     id: "tcs-aws-admin",
-    role: "AWS Administrator / Observability Engineer",
+    role: "Observability Engineer",
     company: "Tata Consultancy Services",
     location: "Hyderabad, IN",
-    period: "Mar 2022 — Feb 2024",
+    period: "Mar 2022 — May 2023",
     current: false,
     tags: ["EC2", "VPC", "IAM", "RDS", "Terraform", "CloudWatch"],
     highlights: [
