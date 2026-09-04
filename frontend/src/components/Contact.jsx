@@ -119,14 +119,15 @@ export default function Contact() {
                 <Download className="w-4 h-4 text-[#10B981]" />
                 <span className="text-[#38BDF8]">resume:</span>
                 <a
-                  href="https://customer-assets.emergentagent.com/job_anil-devops/artifacts/pvsjkl44_Anil_kumar_cloud_resume_MINFY.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="contact-resume-link"
-                  className="text-[#F8FAFC] hover:text-[#10B981] transition-colors"
-                >
-                  Anil_Kumar_Patnana_Resume.pdf
-                </a>
+  href="/Updated_Resume_Anil.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  data-testid="contact-resume-link"
+  className="text-[#F8FAFC] hover:text-[#10B981] transition-colors"
+>
+  Updated_Resume_Anil.pdf
+</a>
+
               </div>
             </div>
           </div>
