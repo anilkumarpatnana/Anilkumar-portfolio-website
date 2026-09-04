@@ -194,15 +194,22 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="hero-cta-resume"
-              className="group inline-flex items-center justify-center gap-2 bg-transparent text-[#F8FAFC] border border-[#1E293B] hover:border-[#10B981] hover:text-[#10B981] px-6 py-3 rounded-md transition-colors font-mono text-sm"
-            >
-              <Download className="w-4 h-4" />
-              download_resume.pdf
-            </a>
+  href="/Updated_Resume_Anil.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  download="Anil_Kumar_Patnana_Resume.pdf"
+  data-testid="hero-cta-resume"
+  className="inline-flex items-center justify-center gap-2
+    bg-transparent text-[#F8FAFC]
+    border border-[#1E293B]
+    px-6 py-3 rounded-md
+    hover:border-[#10B981]
+    hover:text-[#10B981]
+    transition-colors font-mono text-sm"
+>
+  <Download className="w-4 h-4" />
+  download_resume.pdf
+</a>
             <a
               href="#contact"
               data-testid="hero-cta-connect"
