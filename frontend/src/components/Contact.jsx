@@ -125,7 +125,7 @@ export default function Contact() {
   data-testid="contact-resume-link"
   className="text-[#F8FAFC] hover:text-[#10B981] transition-colors"
 >
-  Updated_Resume_Anil.pdf
+  Anil_Kumar_Patnana_Resume.pdf
 </a>
 
               </div>
