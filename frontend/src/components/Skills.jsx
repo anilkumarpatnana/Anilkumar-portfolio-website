@@ -156,7 +156,7 @@ export default function Skills() {
               </div>
 
   <a
-                href={RESUME_URL}
+                href="/Updated_Resume_Anil.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="skills-resume-link"
