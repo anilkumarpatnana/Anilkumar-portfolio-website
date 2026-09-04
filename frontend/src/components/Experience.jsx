@@ -9,7 +9,7 @@ const EXPERIENCE = [
     location: "Hyderabad, IN",
     period: "June 2023 — Present",
     current: true,
-    tags: ["DOCKER", "K8S", "TERRAFORM", "LINUX", "JENKINS"],
+    tags: ["DOCKER", "K8S", "TERRAFORM", "LINUX", "JENKINS", "AWS"],
     highlights: [
       "Experienced in containerizing applications and managing Docker containers",
       "Experienced in deploying, scaling, and managing containerized applications",
@@ -25,7 +25,7 @@ const EXPERIENCE = [
     location: "Hyderabad, IN",
     period: "March 2022 — May 2023",
     current: false,
-    tags: ["EC2", "VPC", "IAM", "RDS", "Terraform", "CloudWatch"],
+    tags: ["GRAFANA", "REDHAT OPENSHIFT", "CLOUDWATCH", "AWS", "INFRASTRUCTURE-MONITORING", "HELIX"],
     highlights: [
   "Monitored infrastructure and applications across Windows, Linux, middleware, and database servers",
   "Monitored key infrastructure metrics including CPU, memory, disk utilization, and server availability",
