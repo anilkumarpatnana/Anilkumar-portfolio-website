@@ -67,7 +67,7 @@ export default function About() {
               </div>
               <div className="relative">
                 <img
-                  src="/assets/anil_professional.png"
+                  src="/assets/anil_professional.jpeg"
                   alt="Anil Kumar Patnana"
                   loading="lazy"
                   className="w-full h-auto object-cover aspect-square transition-all duration-500 group-hover:scale-[1.02]"
