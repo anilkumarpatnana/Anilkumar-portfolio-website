@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+import bcrypt
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -9,7 +10,6 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
-
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -37,7 +37,90 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+class RegisterRequest(BaseModel):
+    username: str
+    password: str
+
 # Add your routes to the router instead of directly to app
+@api_router.post("/login")
+async def login(input: LoginRequest):
+    user = await db.users.find_one({"username": input.username})
+
+    if not user:
+        from fastapi import HTTPException
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid username or password"
+        )
+
+    password_valid = bcrypt.checkpw(
+        input.password.encode("utf-8"),
+        user["password_hash"].encode("utf-8")
+    )
+
+    if not password_valid:
+        from fastapi import HTTPException
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid username or password"
+        )
+
+    return {
+        "success": True,
+        "message": "Login successful"
+    }
+
+@api_router.post("/register")
+async def register(input: RegisterRequest):
+    from fastapi import HTTPException
+
+    username = input.username.strip()
+
+    if not username or not input.password:
+        raise HTTPException(
+            status_code=400,
+            detail="Username and password are required"
+        )
+
+    if len(username) < 3:
+        raise HTTPException(
+            status_code=400,
+            detail="Username must be at least 3 characters"
+        )
+
+    if len(input.password) < 6:
+        raise HTTPException(
+            status_code=400,
+            detail="Password must be at least 6 characters"
+        )
+
+    existing_user = await db.users.find_one({"username": username})
+
+    if existing_user:
+        raise HTTPException(
+            status_code=409,
+            detail="Username already exists"
+        )
+
+    password_hash = bcrypt.hashpw(
+        input.password.encode("utf-8"),
+        bcrypt.gensalt()
+    ).decode("utf-8")
+
+    await db.users.insert_one({
+        "username": username,
+        "password_hash": password_hash,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    })
+
+    return {
+        "success": True,
+        "message": "Registration successful"
+    }
+
 @api_router.get("/")
 async def root():
     return {"message": "Hello World"}
