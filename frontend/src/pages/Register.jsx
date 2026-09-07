@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL =
-  process.env.REACT_APP_API_URL || "http://54.205.196.244:8000";
+const API_URL = "https://api.anilkumarpatnana.online";
+
 
 export default function Register() {
   const [username, setUsername] = useState("");
