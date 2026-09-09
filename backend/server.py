@@ -26,7 +26,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://anilkumar-portfolio-website-git-feat-ca3524-anilkumarpatnana555.vercel.app",
+        "https://login.anilkumarpatnana.online",
     ],
     allow_credentials=True,
     allow_methods=["*"],
